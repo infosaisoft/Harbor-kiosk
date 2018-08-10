@@ -2,6 +2,7 @@ package com.harbor.controller;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.core.MediaType;
 
@@ -35,13 +36,13 @@ public class PatientController {
 	
 	
 	@Consumes(MediaType.APPLICATION_JSON)
+	@CrossOrigin("*")
 	@RequestMapping(value="/patient_add", method =RequestMethod.POST,consumes={"application/JSON", "application/XML"})
-	public @ResponseBody String insertPatient( @RequestBody PatientDto PatDto,HttpServletRequest req) {
+	public @ResponseBody String insertPatient( @RequestBody PatientDto PatDto,HttpServletRequest req,HttpServletResponse res) {
 		String result = null;
 		System.out.println(PatDto);
 		PatDto.setPatientName("rtsf");
-		String json=req.getContentType();
-		System.out.println(json);
+		res.setContentType("Access-Control-Allow-Headers");
 		result = PatSer.registerPatient(PatDto);
 		return result;
 		

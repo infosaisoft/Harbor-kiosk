@@ -4,7 +4,7 @@ public class HosptialDto {
 
 	private String name;
 	private String address;
-	private String regNumber;
+	private String phNumber;
 	private String hospitalLogo;
 	
 	
@@ -21,11 +21,12 @@ public class HosptialDto {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getRegNumber() {
-		return regNumber;
+	
+	public String getPhNumber() {
+		return phNumber;
 	}
-	public void setRegNumber(String regNumber) {
-		this.regNumber = regNumber;
+	public void setPhNumber(String phNumber) {
+		this.phNumber = phNumber;
 	}
 	public String getHospitalLogo() {
 		return hospitalLogo;

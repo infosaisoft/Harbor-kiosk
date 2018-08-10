@@ -1,13 +1,23 @@
 package com.harbor.domain;
 
+import com.harbor.common.CustomIdGenrater;
+
 public class HosptialBo {
 
 	private String name;
 	private String address;
-	private String regNumber;
+	private String phNumber;
 	private String hospitalLogo;
+	private String uuid;
 	
-	
+	public String getUuid() {
+		return uuid;
+	}
+	public void setUuid(String uuid) {
+		CustomIdGenrater CID = new CustomIdGenrater();
+		uuid = CID.generateUniqueKeyUsingUUID();
+		this.uuid = uuid;
+	}
 	public String getName() {
 		return name;
 	}
@@ -20,11 +30,12 @@ public class HosptialBo {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getRegNumber() {
-		return regNumber;
+	
+	public String getPhNumber() {
+		return phNumber;
 	}
-	public void setRegNumber(String regNumber) {
-		this.regNumber = regNumber;
+	public void setPhNumber(String phNumber) {
+		this.phNumber = phNumber;
 	}
 	public String getHospitalLogo() {
 		return hospitalLogo;

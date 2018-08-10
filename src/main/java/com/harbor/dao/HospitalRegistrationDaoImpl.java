@@ -9,7 +9,7 @@ import com.harbor.domain.HosptialBo;
 
 @Repository
 public class HospitalRegistrationDaoImpl implements HospitalRegistrationDao {
-	private static final String INSERT_HOSPITAL="INSERT INTO HOSPITAL(NAME,ADDRESS,NUMBER,LOGO) VALUES(?,?,?,?)";
+	private static final String INSERT_HOSPITAL="INSERT INTO hospitals(Name,Address,Contact,Registration_Number,Hospital_Logo) VALUES(?,?,?,?,?)";
 	@Autowired
 	private JdbcTemplate jt;
 	@Override
@@ -22,7 +22,7 @@ public class HospitalRegistrationDaoImpl implements HospitalRegistrationDao {
 			id.generateUniqueKeyUsingUUID();
 			System.out.println(id);
 	     
-	     count=jt.update(INSERT_HOSPITAL, hbo.getName(),hbo.getAddress(),hbo.getRegNumber(),hbo.getHospitalLogo());
+	     count=jt.update(INSERT_HOSPITAL, hbo.getName(),hbo.getAddress(),hbo.getPhNumber(),"1385151",hbo.getHospitalLogo());
 		 
 		return count;
 	}

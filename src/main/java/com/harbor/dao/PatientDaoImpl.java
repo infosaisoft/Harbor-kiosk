@@ -3,10 +3,8 @@ package com.harbor.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.harbor.common.CustomIdGenrater;
 import com.harbor.domain.PatientRegistration;
 
 @Repository
