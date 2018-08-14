@@ -20,6 +20,7 @@ public class HospitalRegistrationDaoImpl implements HospitalRegistrationDao {
 			id=new CustomIdGenrater();
 			System.out.println("dao");
 			long uid=id.getID();
+			
 			String uuid=String.valueOf(uid);
 			uuid="HID-"+uuid;
 	
