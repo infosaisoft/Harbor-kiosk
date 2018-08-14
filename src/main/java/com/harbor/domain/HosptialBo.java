@@ -14,8 +14,6 @@ public class HosptialBo {
 		return uuid;
 	}
 	public void setUuid(String uuid) {
-		CustomIdGenrater CID = new CustomIdGenrater();
-		uuid = CID.generateUniqueKeyUsingUUID();
 		this.uuid = uuid;
 	}
 	public String getName() {

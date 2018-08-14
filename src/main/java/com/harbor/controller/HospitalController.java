@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.harbor.dto.HosptialDto;
 import com.harbor.service.RegistrationHospitalService;
@@ -26,10 +27,12 @@ public class HospitalController {
 	@RequestMapping(value="/register-hospital",method=RequestMethod.POST,consumes={"application/JSON", "application/XML"})
 	public @ResponseBody String hospitalRegistation(@RequestBody HosptialDto hdto) {
 		String result=null;
-	        System.out.println(hdto.getName());
-	        System.out.println(hdto.getAddress());
-	        System.out.println(hdto.getHospitalLogo());
-	        System.out.println(hdto.getPhNumber());
+		MultipartFile logo=null;
+		String fname=null;
+	        logo=hdto.getHospitalLogo();
+	        
+	        //get file name
+	        fname=logo.getOriginalFilename();
 		//use service
 		result=service.registation(hdto);
 		return result;

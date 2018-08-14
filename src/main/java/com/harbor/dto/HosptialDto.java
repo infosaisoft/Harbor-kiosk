@@ -1,11 +1,13 @@
 package com.harbor.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class HosptialDto {
 
 	private String name;
 	private String address;
 	private String phNumber;
-	private String hospitalLogo;
+	private MultipartFile hospitalLogo;
 	
 	
 	
@@ -28,11 +30,12 @@ public class HosptialDto {
 	public void setPhNumber(String phNumber) {
 		this.phNumber = phNumber;
 	}
-	public String getHospitalLogo() {
+	public MultipartFile getHospitalLogo() {
 		return hospitalLogo;
 	}
-	public void setHospitalLogo(String hospitalLogo) {
+	public void setHospitalLogo(MultipartFile hospitalLogo) {
 		this.hospitalLogo = hospitalLogo;
 	}
+	
 	
 }
