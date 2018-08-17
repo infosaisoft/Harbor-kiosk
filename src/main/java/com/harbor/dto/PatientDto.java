@@ -1,43 +1,41 @@
 package com.harbor.dto;
 
-
 public class PatientDto {
-	private int PatientID;
-	private String PatientName;
-	private String PatientAadhar;
-	private String PatientContact;
+	
+	private int patientID;
+	private String patientName;
+	private String patientAadhar;
+	private String patientContact;
+	
 	
 	public int getPatientID() {
-		return PatientID;
+		return patientID;
 	}
 	public void setPatientID(int patientID) {
-		PatientID = patientID;
+		this.patientID = patientID;
 	}
 	public String getPatientName() {
-		return PatientName;
+		return patientName;
 	}
 	public void setPatientName(String patientName) {
-		PatientName = patientName;
+		this.patientName = patientName;
 	}
 	public String getPatientAadhar() {
-		return PatientAadhar;
+		return patientAadhar;
 	}
 	public void setPatientAadhar(String patientAadhar) {
-		PatientAadhar = patientAadhar;
+		this.patientAadhar = patientAadhar;
 	}
 	public String getPatientContact() {
-		return PatientContact;
+		return patientContact;
 	}
 	public void setPatientContact(String patientContact) {
-		PatientContact = patientContact;
-	}
-	@Override
-	public String toString() {
-		return "PatientDto [PatientID=" + PatientID + ", PatientName=" + PatientName + ", PatientAadhar="
-				+ PatientAadhar + ", PatientContact=" + PatientContact + "]";
+		this.patientContact = patientContact;
 	}
 	
 	
 	
 	
-}	
+	
+
+}

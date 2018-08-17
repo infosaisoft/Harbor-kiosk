@@ -7,4 +7,5 @@ public interface DepartmentService {
 	
 	public String registration(DepartmentDto ddto);
 
+
 }

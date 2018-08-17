@@ -23,9 +23,8 @@ public class PatientServiceImpl implements PatientService {
 		PatientRegistration PatReg = null;
 		// Copy dto to domain
 		PatReg = new PatientRegistration();
-	System.out.println(PatDto.getPatientAadhar());
 		BeanUtils.copyProperties(PatDto, PatReg);
-		
+		System.out.println("service::"+PatReg.getPatientContact());
 		msg = PatDao.insertPatient(PatReg);
 		if (msg == 0) {
 			return "Failed";

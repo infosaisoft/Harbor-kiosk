@@ -38,8 +38,6 @@ public class DepatrmentDaimpl implements DepatmentDao {
 		count=jt.update(Insert_Depatment_query,dpt,m[i],n[i],"1234");
 		}
 
-		
-		System.out.println("dao class"+dbo.getDptName());
 		return count;
 	}
 

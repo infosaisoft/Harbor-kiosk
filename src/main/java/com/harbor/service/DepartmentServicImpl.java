@@ -28,13 +28,6 @@ public class DepartmentServicImpl implements DepartmentService {
 	
 		String m[]=dptbo.getDptName();
 		String n[]=dptbo.getDptLocation();
-		for(int i=0;i<m.length;i++)
-		{
-		System.out.println("dept name====>"+m[i]);
-		System.out.println("dept location====>"+n[i]);
-		}
-
-		
 		count=dptDao.insert(dptbo);
 		
 		if(count==0) {
