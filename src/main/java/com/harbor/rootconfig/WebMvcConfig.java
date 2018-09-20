@@ -3,24 +3,29 @@ package com.harbor.rootconfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.view.UrlBasedViewResolver;
+import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
+import org.springframework.web.servlet.view.tiles3.TilesView;
+import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.harbor.dto.PatientDto;
 
 @Configuration
 @ComponentScan(basePackages="com.harbor.controller")
 public class WebMvcConfig {
+	
+	@Bean
+	public UrlBasedViewResolver viewResolver() {
+		UrlBasedViewResolver tilesViewResolver = new UrlBasedViewResolver();
+		tilesViewResolver.setViewClass(TilesView.class);
+		return tilesViewResolver;
+	}
 
 	@Bean
-	public ObjectMapper createMapper() {
-		ObjectMapper mapper=null;
-		mapper=new ObjectMapper();
-		
-		mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
-		mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-      //  mapper.readValue(JSON, PatientDto.class);
-		return mapper;
-		
+	public TilesConfigurer tilesConfigurer() {
+		TilesConfigurer tiles = new TilesConfigurer();
+		tiles.setDefinitions(new String[] { "/WEB-INF/tiles.xml" });
+		return tiles;
+
 	}
+	
 }

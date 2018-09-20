@@ -12,8 +12,6 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(basePackages="com.harbor.dao")
 public class PersistentConfig {
 	
-	@Autowired
-	private DataSource ds;
 	
 	
 }
