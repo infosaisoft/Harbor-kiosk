@@ -4,6 +4,6 @@ import com.harbor.domain.HosptialBo;
 
 public interface HospitalRegistrationDao {
 	
-	public int insertHospital(HosptialBo hbo);
+	public int insertHospital(HosptialBo hbo)throws Exception;
 
 }

@@ -2,16 +2,16 @@ package com.harbor.dto;
 
 public class PatientDto {
 	
-	private int patientID;
+	private String patientID;
 	private String patientName;
 	private String patientAadhar;
 	private String patientContact;
 	
 	
-	public int getPatientID() {
+	public String getPatientID() {
 		return patientID;
 	}
-	public void setPatientID(int patientID) {
+	public void setPatientID(String patientID) {
 		this.patientID = patientID;
 	}
 	public String getPatientName() {

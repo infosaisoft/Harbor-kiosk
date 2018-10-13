@@ -3,6 +3,7 @@ package com.harbor.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,13 @@ import com.harbor.dto.PatientDto;
 
 @Service
 public class Doctor_HospitalSerieImpl implements Doctor_HospitalService {
+	
+	
+	
+
+	
+
+
 
 	@Autowired
 	Doctor_HospitalDao dhdao;
@@ -43,16 +51,19 @@ public class Doctor_HospitalSerieImpl implements Doctor_HospitalService {
 	
 	@Override
 	public PatientDiseasesDto getPatientdisease(String pid) {
+		
+ 
+		
 		PatientDiseasesBo pbo=null;
 		PatientDiseasesDto pdto=null;
 		//use dao
 		pbo=dhdao.getPatientdiesease(pid);
-		System.out.println("serviceBO::"+pbo.getDisease_type());
 		//copy bo to dto
 		pdto=new PatientDiseasesDto();
-		
-		System.out.println("service:::"+pdto.getDisease_type());
+	
 		BeanUtils.copyProperties(pbo, pdto);
+		
+	
 		return pdto;
 	}
 }

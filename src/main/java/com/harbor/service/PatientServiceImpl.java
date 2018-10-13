@@ -4,6 +4,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.harbor.common.CustomIdGenrater;
 import com.harbor.dao.PatientDao;
 import com.harbor.domain.PatientRegistration;
 import com.harbor.dto.PatientDto;
@@ -19,12 +20,19 @@ public class PatientServiceImpl implements PatientService {
 	public String registerPatient(PatientDto PatDto) {
 		
 		int msg = 0;
+		String pid=null;
+		
+		pid=String.valueOf(CustomIdGenrater.getID());
+		
+		pid="PID-"+pid;
+		
+		PatDto.setPatientID(pid);
 		
 		PatientRegistration PatReg = null;
 		// Copy dto to domain
 		PatReg = new PatientRegistration();
 		BeanUtils.copyProperties(PatDto, PatReg);
-		System.out.println("service::"+PatReg.getPatientContact());
+
 		msg = PatDao.insertPatient(PatReg);
 		if (msg == 0) {
 			return "Failed";

@@ -1,44 +1,60 @@
 package com.harbor.controller;
 
-import javax.servlet.RequestDispatcher;
+import java.sql.SQLException;
+
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.multipart.MultipartException;
 
-@Controller
-public class MyErrorController implements ErrorController {
+import com.harbor.common.ExceptionResponse;
+import com.harbor.common.ResourceNotFoundException;
+
+
+@ControllerAdvice
+public class MyErrorController  {
 	
-//	@RequestMapping("/error")
-//	public String handleError() {
-//		return "error";
-//	}
 	
-	@Override
-	public String getErrorPath() {
-		
-		return "/error";
+	@ExceptionHandler(ResourceNotFoundException.class)
+	@ResponseStatus(value = HttpStatus.NOT_FOUND)
+	public @ResponseBody ExceptionResponse handleResourceNotFound(final ResourceNotFoundException exception,
+			final HttpServletRequest request) {
+
+		ExceptionResponse error = new ExceptionResponse();
+		error.setErrorMessage(exception.getMessage());
+		error.callerURL(request.getRequestURI());
+
+		return error;
 	}
 	
-	 @RequestMapping("/error")
-	 public String handleError(HttpServletRequest request) {
-	     Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
-	      
-	     System.out.println("error page");
-	     
-	     if (status != null) {
-	         Integer statusCode = Integer.valueOf(status.toString());
-	      
-	         if(statusCode == HttpStatus.NOT_FOUND.value()) {
-	             return "error-404";
-	         }
-	         else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-	             return "error-500";
-	         }
-	     }
-	     return "error";
-	 }
+	@ExceptionHandler(value= {SQLException.class,DataIntegrityViolationException.class})
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	public @ResponseBody ExceptionResponse sqlhandleException(final Exception exception,
+			final HttpServletRequest request) {
+
+		ExceptionResponse error = new ExceptionResponse();
+		error.setErrorMessage(exception.getMessage());
+		error.callerURL(request.getRequestURI());
+
+		return error;
+	}
+
+	@ExceptionHandler(value= {MultipartException.class,Exception.class})
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	public @ResponseBody ExceptionResponse handleException(final Exception exception,
+			final HttpServletRequest request) {
+
+		ExceptionResponse error = new ExceptionResponse();
+		error.setErrorMessage(exception.getMessage());
+		error.callerURL(request.getRequestURI());
+
+		return error;
+	}
+	
 	
 }

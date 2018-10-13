@@ -1,9 +1,10 @@
 package com.harbor.service;
 
 import com.harbor.dto.HosptialDto;
+import com.harbor.validation.FieldValueExists;
 
-public interface RegistrationHospitalService {
+public interface RegistrationHospitalService extends FieldValueExists{
 	
-	public String registation(HosptialDto hdto);
+	public String registation (HosptialDto hdto)throws Exception;
 
 }

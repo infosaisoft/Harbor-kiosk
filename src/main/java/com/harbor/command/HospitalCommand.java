@@ -2,7 +2,11 @@ package com.harbor.command;
 
 import java.util.Date;
 
+
 import org.springframework.web.multipart.MultipartFile;
+
+import com.harbor.service.RegistrationHospitalService;
+import com.harbor.validation.Unique;
 
 public class HospitalCommand {
 	
@@ -12,6 +16,8 @@ public class HospitalCommand {
 	private String city;
 	private String state;
 	private String pincode;
+	
+ @Unique(service = RegistrationHospitalService.class, fieldName = "contact", message = "{contact.unique.violation}")
 	private String contact;
 	private String reg_number;
 	private String logo;

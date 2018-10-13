@@ -17,9 +17,9 @@ import com.harbor.domain.PatientDiseasesBo;
 
 @Repository
 public class Doctor_HospitalDaoImpl implements Doctor_HospitalDao {
-	private static final String get_all_query="select Hospital_id,HospitalName,Address,City,State,PinCode,ContactNo,Email,DiseaseSpecialist,Doctor_id from hospital";
+	private static final String get_all_query="select hid,name,address,city,state,pincode,contact from hospitals";
 	
-	private static final String get_patient_diseases="SELECT Disease_Type,Diet_Chart,Exercises,Dos_and_Donts FROM patient_history WHERE PID=?";
+	private static final String get_patient_diseases="SELECT do_dont_name,do_dont_videos,do_dont_img FROM hospital_dos_donts WHERE HID=?";
 
 	
 	
@@ -39,14 +39,13 @@ public class Doctor_HospitalDaoImpl implements Doctor_HospitalDao {
 			while(rs.next()) {
 				bo=new Doctor_hosptialBo();
 				bo.setHospital_id(rs.getString(1));
+				
 				bo.setHospital_name(rs.getString(2));
 				bo.setHospital_address(rs.getString(3));
 				bo.setCity(rs.getString(4));
 				bo.setCity(rs.getString(5));
 				bo.setDoctor_contact_no(rs.getString(6));
-				bo.setDisease_specialities(rs.getString(7));
-				bo.setDepartments(rs.getString(8));
-				bo.setDepartments(rs.getString(9));
+				
 				listbo=new ArrayList<>();
 				listbo.add(bo);
 				
@@ -76,10 +75,9 @@ public class Doctor_HospitalDaoImpl implements Doctor_HospitalDao {
 				PatientDiseasesBo bo=null;
 				
 				bo=new PatientDiseasesBo();
-					bo.setDisease_type(rs.getString(1));
-					bo.setDiet_chart(rs.getString(2));
-					bo.setExercises(rs.getString(3));
-					bo.setDo_and_donts(rs.getString(4));		
+					bo.setDiet_chart(rs.getString(1));
+					bo.setExercises(rs.getString(2));
+					bo.setDo_and_donts(rs.getString(3));		
 				return bo;
 			}
 			

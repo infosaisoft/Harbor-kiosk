@@ -6,6 +6,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.harbor.common.CustomIdGenrater;
 import com.harbor.dao.DepatmentDao;
 import com.harbor.domain.Departmentbo;
 import com.harbor.dto.DepartmentDto;
@@ -20,8 +21,10 @@ public class DepartmentServicImpl implements DepartmentService {
 	public String registration(DepartmentDto ddto) {
 	
 		Departmentbo dptbo=null;
+
 		int count=0;
 		//copy dto to bo
+		
 		dptbo=new Departmentbo();
 		
 		BeanUtils.copyProperties(ddto, dptbo);

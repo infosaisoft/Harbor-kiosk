@@ -10,7 +10,10 @@ import com.harbor.domain.AdminBo;
 @Repository
 public class AdminDaoImpl implements AdminDao {
 
-	private static final String Insert_query_Admin = "insert into hospital_admin(admin_id,hid,admin_name,admin_email,admin_password,admin_moNumber) values(?,?,?,?,?,?)";
+	private static final String Insert_query_Admin = "insert into hospital_staff(hospital_id,email,contact,name,gender,address,photo,user_id) values(?,?,?,?,?,?,?,?)";
+	private static final String INSERT_USER_QUERY="INSERT INTO USERS(USERNAME,ROLE,PASSWORD) VALUES(?,?,?)";
+	
+	private static final String GET_USER_ID_QUERY="SELECT id FROM users WHERE username=? AND PASSWORD=?";
 
 	@Autowired
 	private JdbcTemplate jt;
@@ -18,17 +21,13 @@ public class AdminDaoImpl implements AdminDao {
 	@Override
 	public int insert(AdminBo abo) {
 	int count=0;
-	 CustomIdGenrater id=null;
-		String password=null;
-		id=new CustomIdGenrater();
+	 long id=0;          
 	
-		long uid=id.getID();
-		
-		String uuid=String.valueOf(uid);
-	   String aid="aid-"+uuid;
-	  String hid="hid-"+uuid;
-	  password=id.generateHash(abo.getAdmin_password());
-	count=jt.update(Insert_query_Admin, aid,hid,abo.getAdmin_name(),abo.getAdmin_email(),password,abo.getAdmin_moNumber());
+	       jt.update(INSERT_USER_QUERY,abo.getUsername() ,abo.getAdmin_password(),abo.getRole());
+	 id=      jt.queryForObject(GET_USER_ID_QUERY, Long.class, abo.getUsername(),abo.getAdmin_password());
+	 
+	 abo.setUser_id(id);
+	 count=jt.update(Insert_query_Admin, abo.getHid(),abo.getAdmin_name(),abo.getAdmin_email(),abo.getAdmin_moNumber(),abo.getGender(),abo.getAddress(),abo.getPhoto(),abo.getUser_id());
 		
 		return count;
 	}

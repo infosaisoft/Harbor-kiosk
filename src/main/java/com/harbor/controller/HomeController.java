@@ -13,6 +13,7 @@ public class HomeController {
 		
 		String hid = (String) req.getAttribute("result");
 		System.out.println(hid);
+	
 		return "home";
 	}
 

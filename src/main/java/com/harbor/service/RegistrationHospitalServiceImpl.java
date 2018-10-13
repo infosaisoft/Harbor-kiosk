@@ -16,22 +16,9 @@ public class RegistrationHospitalServiceImpl implements RegistrationHospitalServ
 	private HospitalRegistrationDao dao;
 	
 	@Override
-	public String registation(HosptialDto hdto) {
+	public String registation(HosptialDto hdto)throws Exception {
 	HosptialBo hbo=null;
 	int count=0;
-	String uuid = null;
-	
-	CustomIdGenrater id=null;
-	
-	id=new CustomIdGenrater();
-	System.out.println("dao");
-	long uid=id.getID();
-	
-	uuid=String.valueOf(uid);
-	uuid="HID-"+uuid;
-	
-	hdto.setHid(uuid);
-	String hosId = hdto.getHid();
 	
 	 //copy dto to bo
 	hbo=new HosptialBo();	
@@ -44,7 +31,19 @@ public class RegistrationHospitalServiceImpl implements RegistrationHospitalServ
 	if(count==0) {
 		return "failed";
 	}
-		return hosId;
+		return "success";
+	}
+
+	@Override
+	public boolean fieldValueExists(Object value, String fieldName) throws UnsupportedOperationException {
+		if (!fieldName.equals("email")) {
+            throw new UnsupportedOperationException("Field name not supported");
+        }
+		
+		if (value == null) {
+            return false;
+        }
+		return false;
 	}
 
 }

@@ -12,7 +12,7 @@ import com.harbor.domain.Departmentbo;
 
 @Repository
 public class DepatrmentDaimpl implements DepatmentDao {
-	private static final String Insert_Depatment_query="insert into department (dptid,dptName,dptLocation,hid) values(?,?,?,?)";
+	private static final String Insert_Depatment_query="insert into departments (dpt_id,dpt_name,dpt_location,hid) values(?,?,?,?)";
 	
 	@Autowired
 	private JdbcTemplate jt;
@@ -22,20 +22,18 @@ public class DepatrmentDaimpl implements DepatmentDao {
 		int count=0;
 		String m[]=dbo.getDptName();
 		String n[]=dbo.getDptLocation();
-		 CustomIdGenrater id=null;
-			
-			id=new CustomIdGenrater();
-			System.out.println("dao");
-			long uid=id.getID();
-			
-			String dpt=String.valueOf(uid);
-			dpt="dpt-"+dpt;
+		 String dptid=null;
 	
 		
 		for(int i=0;i<m.length;i++)
 		{
+			dptid=String.valueOf(CustomIdGenrater.getID());
+			
+			dptid="DPT-"+dptid;
+			
+			dbo.setDptid(dptid);
 
-		count=jt.update(Insert_Depatment_query,dpt,m[i],n[i],"1234");
+		count=jt.update(Insert_Depatment_query,dbo.getDptid(),m[i],n[i],"hid1");
 		}
 
 		return count;
