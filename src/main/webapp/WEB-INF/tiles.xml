@@ -33,6 +33,19 @@
 			<put-attribute name="title" value="patient" />
 			<put-attribute name="body" value="/WEB-INF/pages/patient.jsp" />
 		</definition>
+		
+		
+		
+		<definition name="admin" extends="baseTemplate">
+			<put-attribute name="title" value="admin" />
+			<put-attribute name="body" value="/WEB-INF/pages/admin.jsp" />
+		</definition>
+		 
+		 
+		 <definition name="department" extends="baseTemplate">
+			<put-attribute name="title" value="department" />
+			<put-attribute name="body" value="/WEB-INF/pages/department.jsp" />
+		</definition>
 		 
 				
 	</tiles-definitions>

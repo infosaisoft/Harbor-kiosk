@@ -24,7 +24,7 @@ public class MyErrorController  {
 	@ResponseStatus(value = HttpStatus.NOT_FOUND)
 	public @ResponseBody ExceptionResponse handleResourceNotFound(final ResourceNotFoundException exception,
 			final HttpServletRequest request) {
-
+		  exception.printStackTrace();
 		ExceptionResponse error = new ExceptionResponse();
 		error.setErrorMessage(exception.getMessage());
 		error.callerURL(request.getRequestURI());
@@ -36,7 +36,7 @@ public class MyErrorController  {
 	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
 	public @ResponseBody ExceptionResponse sqlhandleException(final Exception exception,
 			final HttpServletRequest request) {
-
+                  exception.printStackTrace();
 		ExceptionResponse error = new ExceptionResponse();
 		error.setErrorMessage(exception.getMessage());
 		error.callerURL(request.getRequestURI());
@@ -48,7 +48,7 @@ public class MyErrorController  {
 	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
 	public @ResponseBody ExceptionResponse handleException(final Exception exception,
 			final HttpServletRequest request) {
-
+		  exception.printStackTrace();
 		ExceptionResponse error = new ExceptionResponse();
 		error.setErrorMessage(exception.getMessage());
 		error.callerURL(request.getRequestURI());

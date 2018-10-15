@@ -6,7 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class HosptialBo {
 
-	private String hid;
+	private long id;
 	private String name;
 	private String address;
 	private String city;
@@ -18,11 +18,13 @@ public class HosptialBo {
 	private Date  creation_date;
 	private MultipartFile logo_photo;
 	
-	public String getHid() {
-		return hid;
+	
+	
+	public long getId() {
+		return id;
 	}
-	public void setHid(String hid) {
-		this.hid = hid;
+	public void setId(long id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;

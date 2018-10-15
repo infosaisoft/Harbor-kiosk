@@ -1,18 +1,16 @@
 package com.harbor.dao;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.harbor.common.CustomIdGenrater;
 import com.harbor.domain.Departmentbo;
 
 @Repository
 public class DepatrmentDaimpl implements DepatmentDao {
-	private static final String Insert_Depatment_query="insert into departments (dpt_id,dpt_name,dpt_location,hid) values(?,?,?,?)";
+	private static final String Insert_Depatment_query="insert into departments (name,location,hospital_id) values(?,?,?)";
 	
 	@Autowired
 	private JdbcTemplate jt;
@@ -22,21 +20,18 @@ public class DepatrmentDaimpl implements DepatmentDao {
 		int count=0;
 		String m[]=dbo.getDptName();
 		String n[]=dbo.getDptLocation();
-		 String dptid=null;
 	
 		
 		for(int i=0;i<m.length;i++)
 		{
-			dptid=String.valueOf(CustomIdGenrater.getID());
-			
-			dptid="DPT-"+dptid;
-			
-			dbo.setDptid(dptid);
-
-		count=jt.update(Insert_Depatment_query,dbo.getDptid(),m[i],n[i],"hid1");
+		count=jt.update(Insert_Depatment_query,m[i],n[i],dbo.getHid());
 		}
 
 		return count;
 	}
+	
+	
+	
+	
 
 }

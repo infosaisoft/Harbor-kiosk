@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.core.Context;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ public class DepartmentController {
 	@Autowired
 	DepartmentService dptService;
 	
+	HttpSession ses=null;
 	
 	
 	@RequestMapping(value="department",method=RequestMethod.GET)
@@ -40,10 +42,12 @@ public class DepartmentController {
 	public  String registratinDepartment(Map<String, Object>map,@ModelAttribute("department")DepartmentCommand department ,@Context HttpServletRequest req) {
 		String result=null;
 		DepartmentDto deptdto=null; 
-		
+		ses=req.getSession();
 		//copy cmd to bo
+		
 		deptdto=new DepartmentDto();
 		BeanUtils.copyProperties(department, deptdto);
+		deptdto.setHid((long) ses.getAttribute("id"));
 		//use service
 		String m[]=deptdto.getDptName();
 		String n[]=deptdto.getDptLocation();
@@ -54,27 +58,7 @@ public class DepartmentController {
 		}
 		result=dptService.registration(deptdto);
 		map.put("result", result);
-		return "department";
-	}
-	
-	
-	@ModelAttribute("deptname")
-	public Map<String,Object> departmentName(){
-		Map<String,Object>deptname=new HashMap<>();
-		
-		deptname.put("OPD", "OPD");
-		deptname.put("genral", "genral");
-		return deptname;
-	}
-	
-	
-	@ModelAttribute("deptlocation")
-	public Map<String,Object> departmentLocation(){
-		Map<String,Object>deptlocation=new HashMap<>();
-		
-		deptlocation.put("First", "First");
-		deptlocation.put("Second", "Second");
-		return deptlocation;
+		return "redirect:/setupcomplite";
 	}
  
 }

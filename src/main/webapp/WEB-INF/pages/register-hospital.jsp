@@ -86,9 +86,9 @@
           
          
          
-        <c:if test="${result eq 'success'}">
+       <c:if test="${result eq 'success'}">
      <div> registation success full</div>
-</c:if>
+</c:if> 
           
           
       </div>

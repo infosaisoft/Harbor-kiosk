@@ -8,7 +8,7 @@ public class Departmentbo {
 	private String dptName[];
 	private String dptLocation[];
 	private String dptid;
-	private String hid;
+	private long hid;
 	
 	public String[] getDptName() {
 		return dptName;
@@ -28,11 +28,12 @@ public class Departmentbo {
 	public void setDptid(String dptid) {
 		this.dptid = dptid;
 	}
-	public String getHid() {
+	public long getHid() {
 		return hid;
 	}
-	public void setHid(String hid) {
+	public void setHid(long hid) {
 		this.hid = hid;
 	}
+	
 	
 }

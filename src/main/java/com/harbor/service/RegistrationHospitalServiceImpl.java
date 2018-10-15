@@ -28,22 +28,14 @@ public class RegistrationHospitalServiceImpl implements RegistrationHospitalServ
 	
 	//use dao
 	count=dao.insertHospital(hbo);
+	
+	      hdto.setId(hbo.getId());
 	if(count==0) {
-		return "failed";
+		return "failed"+count;
 	}
-		return "success";
+		return "success"+count;
 	}
 
-	@Override
-	public boolean fieldValueExists(Object value, String fieldName) throws UnsupportedOperationException {
-		if (!fieldName.equals("email")) {
-            throw new UnsupportedOperationException("Field name not supported");
-        }
-		
-		if (value == null) {
-            return false;
-        }
-		return false;
-	}
+	
 
 }

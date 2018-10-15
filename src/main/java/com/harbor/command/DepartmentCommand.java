@@ -5,7 +5,7 @@ public class DepartmentCommand {
 	private String  dptName[];
 	private String dptLocation[];
 	private String dptid;
-	private String hid;
+	private long hid;
 	
 	
 	
@@ -27,11 +27,12 @@ public class DepartmentCommand {
 	public void setDptid(String dptid) {
 		this.dptid = dptid;
 	}
-	public String getHid() {
+	public long getHid() {
 		return hid;
 	}
-	public void setHid(String hid) {
+	public void setHid(long hid) {
 		this.hid = hid;
 	}
-
+	
+	
 }

@@ -13,9 +13,10 @@ public class AdminCommand {
 	private String photo;
 	private long user_id;
 	
+
 	private String username;
 	private String role;
-	
+    private String name;
 	
 	
 	
@@ -90,6 +91,12 @@ public class AdminCommand {
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	

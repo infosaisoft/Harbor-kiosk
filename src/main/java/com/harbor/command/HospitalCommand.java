@@ -5,30 +5,28 @@ import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.harbor.service.RegistrationHospitalService;
-import com.harbor.validation.Unique;
 
 public class HospitalCommand {
 	
-	private String hid;
+	private long id;
 	private String name;
 	private String address;
 	private String city;
 	private String state;
 	private String pincode;
-	
- @Unique(service = RegistrationHospitalService.class, fieldName = "contact", message = "{contact.unique.violation}")
+
 	private String contact;
 	private String reg_number;
 	private String logo;
 	private Date  creation_date;
 	private MultipartFile logo_photo;
 	
-	public String getHid() {
-		return hid;
+	
+	public long getId() {
+		return id;
 	}
-	public void setHid(String hid) {
-		this.hid = hid;
+	public void setId(long id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;

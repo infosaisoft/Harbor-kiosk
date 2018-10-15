@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.sql.SQLException;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.commons.io.FilenameUtils;
@@ -32,10 +33,14 @@ import com.harbor.service.RegistrationHospitalService;
 public class HospitalController {
 
 	@Autowired
-	private RegistrationHospitalService service = null;
+	private RegistrationHospitalService service ;
+	
+	HttpSession ses=null;
 
 	@RequestMapping(value = "/register-hospital", method = RequestMethod.GET)
 	public String hospitalRegistationHome(@ModelAttribute("register-hospital") HospitalCommand hcmd) {
+		
+		System.out.println("registration");
 		return "register-hospital";
 	}
 	
@@ -47,12 +52,10 @@ public class HospitalController {
 		OutputStream os = null;
 		InputStream is = null;
 		String fullname=null;
+		long id=0;
 		
-		if(error.hasErrors()) {
-			return "register-hospital";
-		}
-		else {
 		
+		ses=req.getSession();
 		logo = hcmd.getLogo_photo();
   
 		// get file name
@@ -120,6 +123,7 @@ public class HospitalController {
 		// use service
 		try {
 		result = service.registation(hdto);
+	
 		map.put("result", result);
 		}
 		
@@ -137,8 +141,12 @@ public class HospitalController {
 		  e.getMessage();
 		}
 		
-		}
-		return "register-hospital";
+		id=hdto.getId();
+		
+		System.out.println("hospitalid::"+id);
+		ses.setAttribute("id", id);
+		map.put("id", id);
+		return "redirect:/admin";
 	}
 
 }

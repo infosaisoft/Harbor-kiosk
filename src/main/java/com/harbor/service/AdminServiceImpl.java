@@ -18,6 +18,8 @@ public class AdminServiceImpl implements AdminService {
 	public String registration(AdminDto adto) {
 	AdminBo abo=null;
 	int count=0;
+	
+	System.out.println("admin service");
 		//copy dto to bo
 	abo=new AdminBo();
 	    BeanUtils.copyProperties(adto, abo);
