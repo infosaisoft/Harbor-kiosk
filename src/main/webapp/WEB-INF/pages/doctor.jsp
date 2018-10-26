@@ -57,9 +57,6 @@
 				<form:input path="doctor_name" value="${doccmd. doctor_name}"/><br>
 				
 				<form:input path="doctor__photo"/>
-<<<<<<< HEAD
+
 				</form:form> --%>
-=======
-				</form:form>
- --%>
->>>>>>> branch 'master' of https://github.com/infosaisoft/Harbor-kiosk.git
+
