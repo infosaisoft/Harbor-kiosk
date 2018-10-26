@@ -30,7 +30,7 @@
                         <div class="form-group">
                             <label>Phone Number</label>
                             <form:input path="contact" class="form-control" placeholder="Enter Your Hospital Phone Number"/>  
-                                           
+                                <form:errors path="contact" />           
                         </div>
                   </div>
                    <div class="col">
@@ -84,7 +84,11 @@
               
           </form:form>
           
-         <p>${result}</p>
+         
+         
+       <c:if test="${result eq 'success'}">
+     <div> registation success full</div>
+</c:if> 
           
           
       </div>

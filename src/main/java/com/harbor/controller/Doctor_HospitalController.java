@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +28,14 @@ public class Doctor_HospitalController {
 	@Autowired
 	Doctor_HospitalService docservice=null;
 	
+	HttpSession ses=null;
+	
 	@RequestMapping(value="/getalldoctro",method=RequestMethod.GET)
-	public  String  viewAllDoctor(Map<String, Object>map){
+	public  String  viewAllDoctor(Map<String, Object>map,HttpServletRequest req){
 		List<Doctor_HospitalDto>listdto=null;
-		
+		long id=0;
+		ses=req.getSession();
+		//id=(long) ses.getAttribute("id");
 		listdto=docservice.getallData();
 		map.put("listdto", listdto);
 		return "doctor";

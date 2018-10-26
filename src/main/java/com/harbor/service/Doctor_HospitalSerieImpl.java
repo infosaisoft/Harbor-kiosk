@@ -18,11 +18,6 @@ import com.harbor.dto.PatientDto;
 @Service
 public class Doctor_HospitalSerieImpl implements Doctor_HospitalService {
 	
-	
-	
-
-	
-
 
 
 	@Autowired
