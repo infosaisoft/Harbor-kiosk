@@ -5,6 +5,6 @@ import com.harbor.dto.HosptialDto;
 
 public interface RegistrationHospitalService{
 	
-	public String registation (HosptialDto hdto)throws Exception;
+	public String registation (HosptialDto hdto);
 
 }

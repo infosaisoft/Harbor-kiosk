@@ -17,9 +17,9 @@ import com.harbor.domain.PatientDiseasesBo;
 
 @Repository
 public class Doctor_HospitalDaoImpl implements Doctor_HospitalDao {
-	private static final String get_all_query="select hid,name,address,city,state,pincode,contact from hospitals";
+	private static final String get_all_query="select id,name,address,city,state,pincode,contact from hospitals";
 	
-	private static final String get_patient_diseases="SELECT do_dont_name,do_dont_videos,do_dont_img FROM hospital_dos_donts WHERE HID=?";
+	private static final String get_patient_diseases="SELECT do_dont_name,do_dont_videos,do_dont_img FROM hospital_dos_donts WHERE hospital_id=?";
 
 	
 	

@@ -52,11 +52,11 @@
 				
 				
 				
-				<form:form method="POST" modelAttribute="doccmd">
+			<%-- 	<form:form method="POST" modelAttribute="doccmd">
 				
 				<form:input path="did"  value="${docmd.did }" disabled="true"/><br>
 				
 				<form:input path="doctor_name" value="${doccmd. doctor_name}"/><br>
 				
 				<form:input path="doctor__photo"/>
-				</form:form>
+				</form:form> --%>

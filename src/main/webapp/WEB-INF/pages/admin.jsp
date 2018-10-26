@@ -14,14 +14,14 @@
                         <div class="form-group">
                             <label> Name</label>
                             <form:input path="name" class="form-control" placeholder="Enter Name"/>  
-                                         
+                              <form:errors path="name" />           
                         </div>
                   </div>
                   <div class="col">
                         <div class="form-group">
                             <label>Email</label>
                             <form:input path="admin_email" class="form-control" placeholder="Enter Your emai Address"/>  
-                                            
+                               <form:errors path="admin_email" />             
                         </div>
                   </div>
               </div>
@@ -31,14 +31,14 @@
                         <div class="form-group">
                             <label>Phone Number</label>
                             <form:input path="admin_moNumber" class="form-control" placeholder="Enter Your  Phone Number"/>  
-                                     
+                                <form:errors path="admin_moNumber"></form:errors>     
                         </div>
                   </div>
                    <div class="col">
                         <div class="form-group">
                             <label>User Name</label>
                             <form:input path="username" class="form-control" placeholder="User Name"/>  
-                                           
+                                    <form:errors path="username" />       
                         </div>
                   </div>
               </div>
@@ -48,7 +48,7 @@
                         <div class="form-group">
                             <label>Password</label>
                             <form:input path="admin_password" class="form-control" placeholder="Enter Password"/>  
-                                         
+                              <form:errors path="admin_password" />           
                         </div>
                   </div>
                  
@@ -57,7 +57,7 @@
                
                             <form:input path="role" class="form-control" type="hidden" value="admin"/>  
                        
-             
+                               <form:errors  path="role"/>
               
               <div class="form-group footerBtn">
                      <button type="submit" class="btn btn-custom btn-success">Next Step</button>               

@@ -1,11 +1,30 @@
 package com.harbor.command;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+
+import com.harbor.validation.IUniqueCoupon;
+import com.harbor.validation.IValidPassword;
 
 public class AdminCommand {
 
+	
+	@NotBlank(message="Admin name required")
 	private String admin_name;
+	@NotBlank(message="Email is required")
+	@Email(message="Invalid email address")
 	private String admin_email;
+	
+	@IUniqueCoupon(message="Contact number already exist")
+	@Pattern(regexp="^\\+(?:[0-9] ?){6,14}[0-9]$",message="Invalid contact number")
 	private String admin_moNumber;
+	
 	private long admin_id;
+	
+	
+	@NotEmpty(message="Password is required")
+	@IValidPassword(message="password must be valid")
 	private String admin_password;
 	private long  hid;
 	private int gender;
@@ -13,9 +32,12 @@ public class AdminCommand {
 	private String photo;
 	private long user_id;
 	
-
+     @NotEmpty(message="username is requried") 
 	private String username;
+     
+     @NotEmpty(message="role is requeird")
 	private String role;
+     @NotEmpty(message="name is requried")
     private String name;
 	
 	
