@@ -2,8 +2,7 @@ package com.harbor.dto;
 
 public class Doctor_HospitalDto {
 	
-
-	private String did;
+	private long did;
 	private String doctor_name;
 	private String doctor__photo;
 	private String  doctor_city;
@@ -13,21 +12,21 @@ public class Doctor_HospitalDto {
 	private String speciality;
 	
 	private String hospital_name;
-	private String hospital_id;
+	private long hospital_id;
 	private String hospital_address;
 	private String hospital_contact;
 	private String disease_specialities;
 	private String departments;
 	private String city;
+	private String pincode;
+	private String state;
 	
 	
 	
-	
-	
-	public String getDid() {
+	public long getDid() {
 		return did;
 	}
-	public void setDid(String did) {
+	public void setDid(long did) {
 		this.did = did;
 	}
 	public String getDoctor_name() {
@@ -78,10 +77,10 @@ public class Doctor_HospitalDto {
 	public void setHospital_name(String hospital_name) {
 		this.hospital_name = hospital_name;
 	}
-	public String getHospital_id() {
+	public long getHospital_id() {
 		return hospital_id;
 	}
-	public void setHospital_id(String hospital_id) {
+	public void setHospital_id(long hospital_id) {
 		this.hospital_id = hospital_id;
 	}
 	public String getHospital_address() {
@@ -114,6 +113,20 @@ public class Doctor_HospitalDto {
 	public void setCity(String city) {
 		this.city = city;
 	}
+	public String getPincode() {
+		return pincode;
+	}
+	public void setPincode(String pincode) {
+		this.pincode = pincode;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	
+	
 	
 
 }

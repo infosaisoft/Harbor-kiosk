@@ -6,6 +6,6 @@
 <section class="content-bg">
   <div class="container">
       <h2 class="formHead text-center mb-3">Home Page</h2>
-      
+      <img src="assets/images/hospital/img-7598182049.jpg" alt="Hrbor Kiosk" height="50%" width="50%"/>
   </div>
 </section>

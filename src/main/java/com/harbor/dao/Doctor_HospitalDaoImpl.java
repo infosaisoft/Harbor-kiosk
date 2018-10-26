@@ -17,8 +17,7 @@ import com.harbor.domain.PatientDiseasesBo;
 
 @Repository
 public class Doctor_HospitalDaoImpl implements Doctor_HospitalDao {
-	private static final String get_all_query="select id,name,address,city,state,pincode,contact from hospitals";
-	
+	private static final String get_all_query="SELECT t2.name,t1.name,t1.address,t1.gender,t1.address,t1.city FROM  doctors t1 INNER JOIN hospitals t2 ON t1.id=t2.id";
 	private static final String get_patient_diseases="SELECT do_dont_name,do_dont_videos,do_dont_img FROM hospital_dos_donts WHERE hospital_id=?";
 
 	
@@ -34,19 +33,20 @@ public class Doctor_HospitalDaoImpl implements Doctor_HospitalDao {
 
 		@Override
 		public List<Doctor_hosptialBo> extractData(ResultSet rs) throws SQLException, DataAccessException {
-		 List<Doctor_hosptialBo>listbo=null;
-		 Doctor_hosptialBo bo=null;
+		 List<Doctor_hosptialBo>listbo=	listbo=new ArrayList<>();;
+		 
 			while(rs.next()) {
-				bo=new Doctor_hosptialBo();
-				bo.setHospital_id(rs.getString(1));
-				
-				bo.setHospital_name(rs.getString(2));
-				bo.setHospital_address(rs.getString(3));
-				bo.setCity(rs.getString(4));
-				bo.setCity(rs.getString(5));
-				bo.setDoctor_contact_no(rs.getString(6));
-				
-				listbo=new ArrayList<>();
+				Doctor_hosptialBo bo=null;
+				bo=new Doctor_hosptialBo();			
+				bo.setHospital_name(rs.getString(1));   
+				bo.setDoctor_name(rs.getString(2));
+				bo.setGender(rs.getString(3));
+				bo.setHospital_address(rs.getString(4));
+				//bo.setState(rs.getString(5));
+				//bo.setPincode(rs.getString(6));
+				bo.setHospital_contact(rs.getString(5));
+				bo.setCity(rs.getString(6));
+			
 				listbo.add(bo);
 				
 			}
