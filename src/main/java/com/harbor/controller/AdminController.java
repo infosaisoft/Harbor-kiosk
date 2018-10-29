@@ -19,7 +19,6 @@ import com.harbor.service.AdminService;
 
 
 @Controller
-@SessionAttributes({"id"})
 public class AdminController {
 	
 	@Autowired
@@ -27,8 +26,8 @@ public class AdminController {
 	HttpSession ses=null;
 
 
-	@RequestMapping(value="admin",method=RequestMethod.GET)
-	public String showAdmin(@ModelAttribute("admincmd") AdminCommand admincmd,HttpServletRequest req) {
+	@RequestMapping(value="	",method=RequestMethod.GET)
+	public String showAdmin(@ModelAttribute("admincmd") AdminCommand admincmd) {
       
 		return "admin";
 	}

@@ -2,6 +2,7 @@ package com.harbor.service;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.harbor.dao.AdminDao;
@@ -13,17 +14,20 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Autowired
 	AdminDao ado;
+	
+	@Autowired
+	BCryptPasswordEncoder encode;
 
 	@Override
 	public String registration(AdminDto adto) {
 	AdminBo abo=null;
 	int count=0;
 	
-	System.out.println("admin service");
+	
 		//copy dto to bo
 	abo=new AdminBo();
 	    BeanUtils.copyProperties(adto, abo);
-	    
+	       abo.setAdmin_password(encode.encode(abo.getAdmin_password()));
 	    //use dao
 	    count=ado.insert(abo);
 	    

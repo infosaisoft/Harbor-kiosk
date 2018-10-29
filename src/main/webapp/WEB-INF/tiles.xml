@@ -38,7 +38,8 @@
 		
 		<definition name="admin" extends="baseTemplate">
 			<put-attribute name="title" value="admin" />
-			<put-attribute name="body" value="/WEB-INF/pages/admin.jsp" />
+			<put-attribute name="body"
+	value="/WEB-INF/pages/admin.jsp" />
 		</definition>
 		 
 		 
@@ -53,7 +54,12 @@
 			<put-attribute name="title" value="doctor" />
 			<put-attribute name="body" value="/WEB-INF/pages/doctor.jsp" />
 		</definition>
-		 
+		
+		<!-- <definition name="login" extends="baseTemplate">
+			<put-attribute name="title" value="login" />
+			<put-attribute name="body" value="/WEB-INF/pages/login.jsp" />
+		</definition>
+		  -->
 				
 	</tiles-definitions>
 

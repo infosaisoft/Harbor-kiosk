@@ -39,8 +39,7 @@ public class HospitalController {
 
 	@RequestMapping(value = "/register-hospital", method = RequestMethod.GET)
 	public String hospitalRegistationHome(@ModelAttribute("register-hospital") HospitalCommand hcmd) {
-		
-		System.out.println("registration");
+
 		return "register-hospital";
 	}
 	
