@@ -54,5 +54,9 @@ public class Doctor_HospitalController {
        map.put("docmd",doccmd);
 		return "doctor";
 	}
+	
+	
+	
+	
 
 }

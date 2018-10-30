@@ -1,14 +1,16 @@
 package com.harbor.command;
 
+import javax.validation.constraints.NotEmpty;
+
 public class DepartmentCommand {
-	
+
 	private String  dptName[];
 	private String dptLocation[];
 	private String dptid;
 	private long hid;
 	
 	
-	
+
 	public String[] getDptName() {
 		return dptName;
 	}

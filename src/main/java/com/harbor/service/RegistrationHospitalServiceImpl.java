@@ -16,7 +16,7 @@ public class RegistrationHospitalServiceImpl implements RegistrationHospitalServ
 	private HospitalRegistrationDao dao;
 	
 	@Override
-	public String registation(HosptialDto hdto)throws Exception {
+	public String registation(HosptialDto hdto) {
 	HosptialBo hbo=null;
 	int count=0;
 	

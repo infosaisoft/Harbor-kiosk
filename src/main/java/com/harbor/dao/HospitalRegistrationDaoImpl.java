@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.harbor.common.CustomIdGenrater;
@@ -18,8 +19,10 @@ public class HospitalRegistrationDaoImpl implements HospitalRegistrationDao {
 	@Autowired
 	private JdbcTemplate jt;
 	
+
+	
 	@Override
-	public int insertHospital(HosptialBo hbo)throws Exception {
+	public int insertHospital(HosptialBo hbo) {
 	     int count=0;
 	     long id=0;
 	     	     
@@ -28,10 +31,12 @@ public class HospitalRegistrationDaoImpl implements HospitalRegistrationDao {
 	     if(count==1) {
 	     id=jt.queryForObject(GET_HOSPITAL_ID, Long.class, hbo.getReg_number());
 		   }
-	     
-	     System.out.println(id);
 	     hbo.setId(id);
 		 return count;
+		
 	}	
+	
+	
+
 
 }

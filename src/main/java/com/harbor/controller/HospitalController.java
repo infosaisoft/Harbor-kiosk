@@ -17,15 +17,16 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.harbor.command.HospitalCommand;
 import com.harbor.common.CustomIdGenrater;
-import com.harbor.common.EmployeeServiceException;
-import com.harbor.common.ResourceNotFoundException;
+
 import com.harbor.dto.HosptialDto;
 import com.harbor.service.RegistrationHospitalService;
 
@@ -33,42 +34,52 @@ import com.harbor.service.RegistrationHospitalService;
 public class HospitalController {
 
 	@Autowired
-	private RegistrationHospitalService service ;
-	
-	HttpSession ses=null;
+	private RegistrationHospitalService service;
+
+	HttpSession ses = null;
 
 	@RequestMapping(value = "/register-hospital", method = RequestMethod.GET)
 	public String hospitalRegistationHome(@ModelAttribute("register-hospital") HospitalCommand hcmd) {
 
 		return "register-hospital";
 	}
-	
+
 	@RequestMapping(value = "/register-hospital", method = RequestMethod.POST)
-	public String hospitalRegistation(@ModelAttribute("register-hospital") @Valid HospitalCommand hcmd, HttpServletRequest req, Map<String, Object> map,BindingResult error)throws ResourceNotFoundException, EmployeeServiceException  {
+	public String hospitalRegistation(Map<String, Object> map,@Valid @ModelAttribute("register-hospital") HospitalCommand hcmd,BindingResult error, HttpServletRequest req,RedirectAttributes redirectattribute) {
 		String result = null;
 		MultipartFile logo = null;
 		String fname = null;
 		OutputStream os = null;
 		InputStream is = null;
-		String fullname=null;
-		long id=0;
+		String fullname = null;
+		long id = 0;
+
+		ses = req.getSession();
 		
 		
-		ses=req.getSession();
+		
+		if (error.hasErrors()) {
+			 redirectattribute.addFlashAttribute("name", error);
+			return "register-hospital";
+		}
+
 		logo = hcmd.getLogo_photo();
-  
-		// get file name
-		fname = logo.getOriginalFilename();
 		
 
+
+
+
+		// get file name
+		fname = logo.getOriginalFilename();
+
 		try {
-  
-               String extenstion=FilenameUtils.getExtension(fname);
-		         fullname=String.valueOf(CustomIdGenrater.getID());
-		         
-		         fullname="img-"+fullname+"."+extenstion;
-			 
-            File imageFile = new File(req.getServletContext().getRealPath("/assets/images/hospital/"), fullname);
+
+			String extenstion = FilenameUtils.getExtension(fname);
+			fullname = String.valueOf(CustomIdGenrater.getID());
+
+			fullname = "img-" + fullname + "." + extenstion;
+
+			File imageFile = new File(req.getServletContext().getRealPath("/assets/images/hospital/"), fullname);
 			// create OutputStreams pointing to dest files on server machine file system
 			os = new FileOutputStream(imageFile);
 
@@ -101,8 +112,7 @@ public class HospitalController {
 			catch (IOException io) {
 				io.printStackTrace();
 			}
-			
-			
+
 			try {
 				if (is != null) {
 					is.close();
@@ -113,36 +123,25 @@ public class HospitalController {
 				io.printStackTrace();
 			}
 		}
-		
+
 		// copy cmd to dto
+
+		System.out.println("the error is:::" + error);
+		
+
 		HosptialDto hdto = new HosptialDto();
 		BeanUtils.copyProperties(hcmd, hdto);
 		hdto.setLogo(fullname);
-		
+
 		// use service
-		try {
+
 		result = service.registation(hdto);
-	
+
 		map.put("result", result);
-		}
-		
-		
-		catch(SQLException e) {
-			throw new ResourceNotFoundException("data are not valid");
-		}
-		
-		
-		catch(ResourceNotFoundException e) {
-			throw new ResourceNotFoundException("unable to reach site");
-		}
-		
-		catch(Exception e) {
-		  e.getMessage();
-		}
-		
-		id=hdto.getId();
-		
-		System.out.println("hospitalid::"+id);
+
+		id = hdto.getId();
+
+		System.out.println("hospitalid::" + id);
 		ses.setAttribute("id", id);
 		map.put("id", id);
 		return "redirect:/admin";

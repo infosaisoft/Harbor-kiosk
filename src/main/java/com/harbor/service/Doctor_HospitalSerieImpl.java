@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 
 import com.harbor.dao.Doctor_HospitalDao;
 import com.harbor.domain.Doctor_hosptialBo;
+import com.harbor.domain.HosptialBo;
 import com.harbor.domain.PatientDiseasesBo;
 import com.harbor.dto.Doctor_HospitalDto;
+import com.harbor.dto.HosptialDto;
 import com.harbor.dto.PatientDiseasesDto;
 import com.harbor.dto.PatientDto;
 
@@ -60,5 +62,19 @@ public class Doctor_HospitalSerieImpl implements Doctor_HospitalService {
 		
 	
 		return pdto;
+	}
+	
+	@Override
+	public HosptialDto getHospitalInfo(long id) {
+		HosptialBo hbo=null;
+		HosptialDto hdto=null;
+		//use dao
+		hbo=dhdao.getHospitalInfoByID(id);
+		
+		//copy bo to dto
+		hdto=new HosptialDto();
+		BeanUtils.copyProperties(hbo, hdto);
+		
+		return hdto;
 	}
 }

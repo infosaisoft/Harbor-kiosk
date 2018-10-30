@@ -2,21 +2,42 @@ package com.harbor.command;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.harbor.validation.IUniqueCoupon;
 
 
 public class HospitalCommand {
 	
 	private long id;
+	@NotNull(message="name must be requried")
+	@NotEmpty(message="name is requried")
 	private String name;
+	
+	@NotEmpty(message="address must be requried")
 	private String address;
+	
+	@NotEmpty(message="city must be requried")
 	private String city;
+	
+	@NotEmpty(message="state must be requried")
 	private String state;
+	
+	@NotEmpty(message="pincode must be requried")
 	private String pincode;
 
+	
+	@Pattern(regexp="(^$|[0-9]{10})",message="phone number not valid")
 	private String contact;
+	
+
 	private String reg_number;
+	
 	private String logo;
 	private Date  creation_date;
 	private MultipartFile logo_photo;

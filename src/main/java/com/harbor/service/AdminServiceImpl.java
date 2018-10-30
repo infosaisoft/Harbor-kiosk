@@ -26,8 +26,9 @@ public class AdminServiceImpl implements AdminService {
 	
 		//copy dto to bo
 	abo=new AdminBo();
+	 
 	    BeanUtils.copyProperties(adto, abo);
-	       abo.setAdmin_password(encode.encode(abo.getAdmin_password()));
+	    abo.setAdmin_password(encode.encode(adto.getAdmin_password()));
 	    //use dao
 	    count=ado.insert(abo);
 	    

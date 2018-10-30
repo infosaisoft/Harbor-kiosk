@@ -7,20 +7,21 @@
   <div class="container">
       <h2 class="formHead text-center mb-3">Hospital Details</h2>
       <div class="patientForm">
+    
           <form:form method="POST" modelAttribute="register-hospital" enctype="multipart/form-data">
               <div class="row">
                   <div class="col">
                         <div class="form-group">
                             <label>Hospital Name</label>
                             <form:input path="name" class="form-control" placeholder="Enter Hospital Name"/>  
-                                         
+                               <form:errors path="name"/>          
                         </div>
                   </div>
                   <div class="col">
                         <div class="form-group">
                             <label>Hospital Address</label>
                             <form:input path="address" class="form-control" placeholder="Enter Your Hospital Address"/>  
-                                            
+                                <form:errors  path="address"/>            
                         </div>
                   </div>
               </div>
@@ -37,7 +38,7 @@
                         <div class="form-group">
                             <label>Registration Number</label>
                             <form:input path="reg_number" class="form-control" placeholder="Hospital Registration Number"/>  
-                                           
+                                <form:errors path="reg_number"/>           
                         </div>
                   </div>
               </div>
@@ -47,14 +48,14 @@
                         <div class="form-group">
                             <label>City</label>
                             <form:input path="city" class="form-control" placeholder="Enter City"/>  
-                                         
+                               <form:errors  path="city"/>          
                         </div>
                   </div>
                   <div class="col">
                         <div class="form-group">
                             <label>State</label>
                             <form:input path="state" class="form-control" placeholder="Enter State"/>  
-                                            
+                             <form:errors  path="state"/>               
                         </div>
                   </div>
               </div>
@@ -66,7 +67,7 @@
                         <div class="form-group">
                             <label>Pin Code</label>
                             <form:input path="pincode" class="form-control" placeholder="Enter Pin Code"/>  
-                                           
+                              <form:errors path="pincode"/>           
                         </div>
                   </div>
                   <div class="col">
@@ -84,12 +85,11 @@
               
           </form:form>
           
-         
-         
-       <c:if test="${result eq 'success'}">
-     <div> registation success full</div>
+         <%-- 
+            <c:if test="${result eq 'failed'}">
+     <div> registation faild!</div>
 </c:if> 
-          
+           --%>
           
       </div>
   </div>

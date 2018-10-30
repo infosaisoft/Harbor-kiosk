@@ -14,11 +14,6 @@
 			<put-attribute name="footer" value="/WEB-INF/pages/footer.jsp" />
 		</definition>
 		
-		<definition name="error" extends="baseTemplate">
-			<put-attribute name="title" value="error" />
-			<put-attribute name="body" value="/WEB-INF/pages/error.jsp" />
-		</definition>
-		 
 		<definition name="register-hospital" extends="baseTemplate">
 			<put-attribute name="title" value="register-hospital" />
 			<put-attribute name="body" value="/WEB-INF/pages/register-hospital.jsp" />
@@ -55,11 +50,11 @@
 			<put-attribute name="body" value="/WEB-INF/pages/doctor.jsp" />
 		</definition>
 		
-		<!-- <definition name="login" extends="baseTemplate">
+		<definition name="login" extends="baseTemplate">
 			<put-attribute name="title" value="login" />
 			<put-attribute name="body" value="/WEB-INF/pages/login.jsp" />
 		</definition>
-		  -->
+		  
 				
 	</tiles-definitions>
 
