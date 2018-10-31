@@ -13,11 +13,11 @@ public class AdminCommand {
 	@NotBlank(message = "Admin name required")
 	private String admin_name;
 
-	@NotEmpty(message = "Email is required")
+	@NotBlank(message = "Email is required")
 	@Email(message = "Invalid email address")
 	private String admin_email;
 
-	//@Pattern(regexp = "(^$|[0-9]{10})", message = "phone number not valid")
+	@Pattern(regexp = "(^$|[0-9]{10})", message = "phone number not valid")
 	private String admin_moNumber;
 
 	private long admin_id;

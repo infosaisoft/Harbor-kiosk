@@ -20,14 +20,6 @@ public class PatientServiceImpl implements PatientService {
 	public String registerPatient(PatientDto PatDto) {
 		
 		int msg = 0;
-		String pid=null;
-		
-		pid=String.valueOf(CustomIdGenrater.getID());
-		
-		pid="PID-"+pid;
-		
-		PatDto.setPatientID(pid);
-		
 		PatientRegistration PatReg = null;
 		// Copy dto to domain
 		PatReg = new PatientRegistration();

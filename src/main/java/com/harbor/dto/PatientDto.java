@@ -2,16 +2,16 @@ package com.harbor.dto;
 
 public class PatientDto {
 	
-	private String patientID;
+	private long patientID;
 	private String patientName;
-	private String patientAadhar;
+	private String aadhar_no;
 	private String patientContact;
 	
 	
-	public String getPatientID() {
+	public long getPatientID() {
 		return patientID;
 	}
-	public void setPatientID(String patientID) {
+	public void setPatientID(long patientID) {
 		this.patientID = patientID;
 	}
 	public String getPatientName() {
@@ -20,11 +20,11 @@ public class PatientDto {
 	public void setPatientName(String patientName) {
 		this.patientName = patientName;
 	}
-	public String getPatientAadhar() {
-		return patientAadhar;
+	public String getAadhar_no() {
+		return aadhar_no;
 	}
-	public void setPatientAadhar(String patientAadhar) {
-		this.patientAadhar = patientAadhar;
+	public void setAadhar_no(String aadhar_no) {
+		this.aadhar_no = aadhar_no;
 	}
 	public String getPatientContact() {
 		return patientContact;
@@ -32,7 +32,6 @@ public class PatientDto {
 	public void setPatientContact(String patientContact) {
 		this.patientContact = patientContact;
 	}
-	
 	
 	
 	

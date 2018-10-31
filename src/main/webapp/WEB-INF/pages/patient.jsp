@@ -24,7 +24,7 @@
                   <div class="col-8">
                         <div class="form-group">
                             <label>PatientAadhar</label>
-                            <form:input path="patientAadhar" class="form-control" placeholder="Enter Your Hospital Address"/>  
+                            <form:input path="aadhar_no" class="form-control" placeholder="Enter Your Hospital Address"/>  
                                             
                         </div>
                   </div>

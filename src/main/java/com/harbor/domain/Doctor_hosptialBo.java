@@ -22,6 +22,8 @@ public class Doctor_hosptialBo {
 	private String pincode;
 	private String state;
 	
+	private String email;
+	
 	
 	
 	
@@ -112,6 +114,12 @@ public class Doctor_hosptialBo {
 	}
 	public String getPincode() {
 		return pincode;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public void setPincode(String pincode) {
 		this.pincode = pincode;

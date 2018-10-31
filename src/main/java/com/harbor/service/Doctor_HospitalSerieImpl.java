@@ -10,9 +10,10 @@ import org.springframework.stereotype.Service;
 
 import com.harbor.dao.Doctor_HospitalDao;
 import com.harbor.domain.Doctor_hosptialBo;
+import com.harbor.domain.HospitalDiseasesBo;
 import com.harbor.domain.HosptialBo;
-import com.harbor.domain.PatientDiseasesBo;
 import com.harbor.dto.Doctor_HospitalDto;
+import com.harbor.dto.HospitalDiseasesDto;
 import com.harbor.dto.HosptialDto;
 import com.harbor.dto.PatientDiseasesDto;
 import com.harbor.dto.PatientDto;
@@ -26,12 +27,12 @@ public class Doctor_HospitalSerieImpl implements Doctor_HospitalService {
 	Doctor_HospitalDao dhdao;
 	
 	@Override
-	public List<Doctor_HospitalDto> getallData() {
+	public List<Doctor_HospitalDto> getallData(long id) {
 	List<Doctor_HospitalDto>listdto=new ArrayList<>();
 	List<Doctor_hosptialBo>listbo=null;
 	
 	//use dao
-	listbo=dhdao.getallInformation();
+	listbo=dhdao.getallInformation(id);
 	
 	listbo.forEach(bo->{
 		
@@ -47,21 +48,22 @@ public class Doctor_HospitalSerieImpl implements Doctor_HospitalService {
 	
 	
 	@Override
-	public PatientDiseasesDto getPatientdisease(String pid) {
-		
+	public List<HospitalDiseasesDto> getPatientdisease(long id) {
+		  List<HospitalDiseasesDto>listdto=new ArrayList<>();
+		  List<HospitalDiseasesBo>listbo=null;
+		  
+		  //use dao
+		  listbo=dhdao.getPatientdiesease(id);
+		  
+		  listbo.forEach(bo->{
+			  HospitalDiseasesDto dto=new HospitalDiseasesDto();
+			  BeanUtils.copyProperties(bo, dto);
+			  listdto.add(dto);
+		  });
  
 		
-		PatientDiseasesBo pbo=null;
-		PatientDiseasesDto pdto=null;
-		//use dao
-		pbo=dhdao.getPatientdiesease(pid);
-		//copy bo to dto
-		pdto=new PatientDiseasesDto();
-	
-		BeanUtils.copyProperties(pbo, pdto);
 		
-	
-		return pdto;
+		return listdto;
 	}
 	
 	@Override

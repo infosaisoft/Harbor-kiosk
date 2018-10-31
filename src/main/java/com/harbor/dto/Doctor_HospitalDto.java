@@ -20,7 +20,7 @@ public class Doctor_HospitalDto {
 	private String city;
 	private String pincode;
 	private String state;
-	
+	private String email;
 	
 	
 	public long getDid() {
@@ -109,6 +109,12 @@ public class Doctor_HospitalDto {
 	}
 	public String getCity() {
 		return city;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public void setCity(String city) {
 		this.city = city;
