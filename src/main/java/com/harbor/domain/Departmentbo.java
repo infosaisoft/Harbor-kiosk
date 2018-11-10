@@ -5,27 +5,29 @@ import java.util.List;
 public class Departmentbo {
 
 	
-	private String dptName[];
-	private String dptLocation[];
-	private String dptid;
+
+	private String  dptName;
+	private String dptLocation;
+	private long dptid;
 	private long hid;
 	
-	public String[] getDptName() {
+	
+	public String getDptName() {
 		return dptName;
 	}
-	public void setDptName(String[] dptName) {
+	public void setDptName(String dptName) {
 		this.dptName = dptName;
 	}
-	public String[] getDptLocation() {
+	public String getDptLocation() {
 		return dptLocation;
 	}
-	public void setDptLocation(String[] dptLocation) {
+	public void setDptLocation(String dptLocation) {
 		this.dptLocation = dptLocation;
 	}
-	public String getDptid() {
+	public long getDptid() {
 		return dptid;
 	}
-	public void setDptid(String dptid) {
+	public void setDptid(long dptid) {
 		this.dptid = dptid;
 	}
 	public long getHid() {

@@ -3,7 +3,7 @@ package com.harbor.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.Logger;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,12 +11,13 @@ import org.springframework.stereotype.Service;
 import com.harbor.dao.Doctor_HospitalDao;
 import com.harbor.domain.Doctor_hosptialBo;
 import com.harbor.domain.HospitalDiseasesBo;
+import com.harbor.domain.HospitalDoAndDontsBo;
 import com.harbor.domain.HosptialBo;
 import com.harbor.dto.Doctor_HospitalDto;
 import com.harbor.dto.HospitalDiseasesDto;
+import com.harbor.dto.HospitalDoAndDontsDto;
 import com.harbor.dto.HosptialDto;
-import com.harbor.dto.PatientDiseasesDto;
-import com.harbor.dto.PatientDto;
+
 
 @Service
 public class Doctor_HospitalSerieImpl implements Doctor_HospitalService {
@@ -78,5 +79,29 @@ public class Doctor_HospitalSerieImpl implements Doctor_HospitalService {
 		BeanUtils.copyProperties(hbo, hdto);
 		
 		return hdto;
+	}
+	
+	
+	
+	
+	@Override
+	public List<HospitalDoAndDontsDto> getAllDoAndDontsByID(long id) {
+		List<HospitalDoAndDontsDto>listdto=new ArrayList<>();
+		  List<HospitalDoAndDontsBo>listbo=null;
+		  
+		  //use dao
+		  listbo=dhdao.getAllDoAndDontdByHID(id);
+		  
+		  listbo.forEach(bo->{
+			  HospitalDoAndDontsDto dto=new HospitalDoAndDontsDto();
+			  BeanUtils.copyProperties(bo, dto);
+			  listdto.add(dto);
+		  });
+
+		
+		
+		return listdto;
+		
+	
 	}
 }

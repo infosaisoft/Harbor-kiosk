@@ -20,6 +20,7 @@ import com.harbor.command.DoctorHospitalCommand;
 import com.harbor.command.HospitalCommand;
 import com.harbor.dto.Doctor_HospitalDto;
 import com.harbor.dto.HospitalDiseasesDto;
+import com.harbor.dto.HospitalDoAndDontsDto;
 import com.harbor.dto.HosptialDto;
 import com.harbor.dto.PatientDiseasesDto;
 import com.harbor.dto.PatientDto;
@@ -66,5 +67,25 @@ public class Doctor_HospitalController {
 		map.put("hoscmd", hoscmd);
 		map.put("listdto", listdto);
 		return "hospital_profile";
+	}
+	
+	
+	
+	
+	@RequestMapping(value = "/getdoanddonts", method = RequestMethod.GET)
+	public String viewDoAndDonts(Map<String, Object> map,HttpServletRequest req) {
+		List<HospitalDoAndDontsDto> listdto = null;
+		long id=0;
+		
+		  ses=req.getSession();
+		id=(long) ses.getAttribute("id");
+		  
+		  //use service
+		
+		listdto = docservice.getAllDoAndDontsByID(id);
+		
+		
+		map.put("listdto", listdto);
+		return "do_and_donts";
 	}
 }

@@ -1,7 +1,9 @@
 package com.harbor.controller;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.harbor.command.DepartmentCommand;
+import com.harbor.command.DepartmentList;
 import com.harbor.dto.DepartmentDto;
 import com.harbor.service.DepartmentService;
 
@@ -34,31 +37,34 @@ public class DepartmentController {
 	
 	@RequestMapping(value="department",method=RequestMethod.GET)
 	public String DepartmentPage(@ModelAttribute("department") DepartmentCommand department) {
+      
 		return "department";
 	}
+	
+
 	
 	
 	@RequestMapping(value="department" ,method=RequestMethod.POST)
 	public  String registratinDepartment(Map<String, Object>map,@ModelAttribute("department")DepartmentCommand department ,@Context HttpServletRequest req) {
 		String result=null;
+		List<DepartmentDto>listdto=null;
 		DepartmentDto deptdto=null; 
 		ses=req.getSession();
-		//copy cmd to bo
-		
 		deptdto=new DepartmentDto();
+		
+		long id=0;
+		//copy cmd to bo
 		BeanUtils.copyProperties(department, deptdto);
-		deptdto.setHid((long) ses.getAttribute("id"));
+		listdto=new ArrayList<>();
+		//deptdto.setHid((long) ses.getAttribute("id"));
+		deptdto.setHid(1);
 		//use service
-		String m[]=deptdto.getDptName();
-		String n[]=deptdto.getDptLocation();
-		for(int i=0;i<m.length;i++)
-		{
-		System.out.println("dept name====>"+m[i]);
-		System.out.println("dept location====>"+n[i]);
-		}
-		result=dptService.registration(deptdto);
+		listdto.add(deptdto);
+				result=dptService.registration(listdto);
+		ses.setAttribute("department", department);
 		map.put("result", result);
-		return "redirect:/setupcomplite";
+		return "department";
 	}
+	
  
 }

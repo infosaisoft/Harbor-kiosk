@@ -1,6 +1,8 @@
 package com.harbor.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,25 +20,24 @@ public class DepartmentServicImpl implements DepartmentService {
 	DepatmentDao dptDao;
 
 	@Override
-	public String registration(DepartmentDto ddto) {
-	
-		Departmentbo dptbo=null;
+	public String registration(List<DepartmentDto> ddto) {
+	   List<DepartmentDto>listdto=new ArrayList<>();
+	   
+		List<Departmentbo> dptbo=new ArrayList<>();
+		
+		int result[]=null;
+		//Convert listDTO to listBO
+		ddto.forEach(dto->{
+			Departmentbo bo=new Departmentbo();
+			BeanUtils.copyProperties(dto,bo);
+			dptbo.add(bo);
+		});
 
-		int count=0;
-		//copy dto to bo
-		
-		dptbo=new Departmentbo();
-		
-		BeanUtils.copyProperties(ddto, dptbo);
-	
-		String m[]=dptbo.getDptName();
-		String n[]=dptbo.getDptLocation();
-		count=dptDao.insert(dptbo);
-		
-		if(count==0) {
-			return "fail";
+		result=dptDao.insert(dptbo);
+		if(result != null) {
+			return "success";
 		}
-		return "success";
+		return "fail";
 	}
 
 }

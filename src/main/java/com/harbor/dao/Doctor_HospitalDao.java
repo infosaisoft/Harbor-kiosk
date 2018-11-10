@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.harbor.domain.Doctor_hosptialBo;
 import com.harbor.domain.HospitalDiseasesBo;
+import com.harbor.domain.HospitalDoAndDontsBo;
 import com.harbor.domain.HosptialBo;
 
 
@@ -15,5 +16,7 @@ public interface Doctor_HospitalDao {
 	
 	
 	public HosptialBo getHospitalInfoByID(long id);
+	
+	public List<HospitalDoAndDontsBo> getAllDoAndDontdByHID(long id);
 
 }

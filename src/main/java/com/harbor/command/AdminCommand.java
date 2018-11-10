@@ -10,19 +10,19 @@ import com.harbor.validation.IValidPassword;
 
 public class AdminCommand {
 
-	@NotBlank(message = "Admin name required")
+	//@NotBlank(message = "Admin name required")
 	private String admin_name;
 
-	@NotBlank(message = "Email is required")
-	@Email(message = "Invalid email address")
+	//@NotBlank(message = "Email is required")
+	//@Email(message = "Invalid email address")
 	private String admin_email;
 
-	@Pattern(regexp = "(^$|[0-9]{10})", message = "phone number not valid")
+	//@Pattern(regexp = "(^$|[0-9]{10})", message = "phone number not valid")
 	private String admin_moNumber;
 
 	private long admin_id;
 
-	@NotBlank(message = "Password is required")
+	//@NotBlank(message = "Password is required")
 	// @IValidPassword(message="password must be valid")
 	private String admin_password;
 	private long hid;

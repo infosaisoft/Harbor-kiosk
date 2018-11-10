@@ -30,6 +30,13 @@
 		</definition>
 		
 		
+		<definition name="do_and_donts" extends="baseTemplate">
+			<put-attribute name="title" value="do_and_donts" />
+			<put-attribute name="body" value="/WEB-INF/pages/do_and_donts.jsp" />
+		</definition>
+		
+		
+		
 		
 		<definition name="admin" extends="baseTemplate">
 			<put-attribute name="title" value="admin" />
